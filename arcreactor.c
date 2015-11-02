@@ -44,10 +44,10 @@ TICK_COUNT appInitSoftware(TICK_COUNT loopStart){
 	led[7].r=0; led[7].g=0 ;led[7].b=maxbright;
 	led[8].r=0; led[8].g=0 ;led[8].b=maxbright;
 	led[9].r=0; led[9].g=0 ;led[9].b=maxbright;
-	led[10].r=0;led[10].g=0;led[10].b=minbright;
-	led[11].r=0;led[11].g=0;led[11].b=minbright;
-	led[12].r=0;led[12].g=0;led[12].b=minbright;
-	led[13].r=0;led[13].g=0;led[13].b=minbright;
+	led[10].r=0;led[10].g=0;led[10].b=maxbright;
+	led[11].r=0;led[11].g=0;led[11].b=maxbright;
+	led[12].r=0;led[12].g=0;led[12].b=maxbright;
+	led[13].r=0;led[13].g=0;led[13].b=maxbright;
 	// led[14].r=0;led[14].g=0;led[14].b=minbright;
 	// led[15].r=0;led[15].g=0;led[15].b=minbright;
 	
@@ -97,6 +97,7 @@ TICK_COUNT appControl(LOOP_COUNT loopCount, TICK_COUNT loopStart) {
 		}
 	}
 
+	/// alternating half bright half fading
 	if (mode == 0) {
 		if (clockHasElapsedGetOverflow(switchtime, halfperiods[set], &remainingtime)) {
 			rprintf("boom!\n");
@@ -160,6 +161,7 @@ TICK_COUNT appControl(LOOP_COUNT loopCount, TICK_COUNT loopStart) {
 		sei();				// Enable interrupts.
 	}
 	
+	/// moving white
 	else if (mode == 2) {
 		if (clockHasElapsedGetOverflow(switchtime, halfperiods[set], &remainingtime)) {
 			rprintf("boom!\n");
